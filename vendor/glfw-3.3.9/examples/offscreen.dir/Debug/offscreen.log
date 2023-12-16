@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/Coding/Desktop-Duckie/vendor/glfw-3.3.9/examples/CMakeLists.txt
+  offscreen.c
+  glad_gl.c
+  Generating Code...
+  offscreen.vcxproj -> E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\examples\Debug\offscreen.exe

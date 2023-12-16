@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\tests\empty.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\deps\tinycthread.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\deps\glad_gl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\deps\tinycthread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\deps\glad\gl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\tests\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{C859CB4F-BB4F-3EC8-A034-1E72A8F9D897}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4114704F-B495-3664-9E8C-05531C28DF68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

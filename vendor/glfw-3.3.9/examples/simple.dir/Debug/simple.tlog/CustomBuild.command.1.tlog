@@ -1,0 +1,10 @@
+^E:\CODING\DESKTOP-DUCKIE\VENDOR\GLFW-3.3.9\EXAMPLES\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SE:/Coding/Desktop-Duckie -BE:/Coding/Desktop-Duckie --check-stamp-file E:/Coding/Desktop-Duckie/vendor/glfw-3.3.9/examples/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

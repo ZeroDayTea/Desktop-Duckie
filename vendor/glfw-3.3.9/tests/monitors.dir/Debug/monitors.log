@@ -1,0 +1,6 @@
+﻿  Building Custom Rule E:/Coding/Desktop-Duckie/vendor/glfw-3.3.9/tests/CMakeLists.txt
+  monitors.c
+  getopt.c
+  glad_gl.c
+  Generating Code...
+  monitors.vcxproj -> E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\tests\Debug\monitors.exe

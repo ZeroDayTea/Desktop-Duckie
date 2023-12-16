@@ -1,0 +1,5 @@
+﻿  Building Custom Rule E:/Coding/Desktop-Duckie/vendor/glfw-3.3.9/tests/CMakeLists.txt
+  triangle-vulkan.c
+  glad_vulkan.c
+  Generating Code...
+  triangle-vulkan.vcxproj -> E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\tests\Debug\triangle-vulkan.exe

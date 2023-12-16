@@ -1,0 +1,2 @@
+/usr/bin/ar qc libvendor.a CMakeFiles/vendor.dir/src/glad.c.o
+/usr/bin/ranlib libvendor.a

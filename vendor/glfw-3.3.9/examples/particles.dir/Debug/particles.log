@@ -1,0 +1,7 @@
+﻿  Building Custom Rule E:/Coding/Desktop-Duckie/vendor/glfw-3.3.9/examples/CMakeLists.txt
+  particles.c
+  tinycthread.c
+  getopt.c
+  glad_gl.c
+  Generating Code...
+  particles.vcxproj -> E:\Coding\Desktop-Duckie\vendor\glfw-3.3.9\examples\Debug\particles.exe

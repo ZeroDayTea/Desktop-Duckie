@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\Coding\Desktop-Duckie\CMakeFiles\da39765d95bb32c2d21cfa9093250a09\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{893B2650-87CF-3656-A2E5-9C4CE86858EA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
