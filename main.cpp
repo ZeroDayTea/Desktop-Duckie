@@ -131,17 +131,17 @@ int main() {
 
     int duck_width, duck_height, nrChannels;
     //stbi_set_flip_vertically_on_load(true);
-    unsigned char *data = stbi_load("../assets/desktopduckie.png", &duck_width, &duck_height, &nrChannels, STBI_rgb_alpha);
+    unsigned char *base_duck = stbi_load("../assets/desktopduckie.png", &duck_width, &duck_height, &nrChannels, STBI_rgb_alpha);
+    unsigned char *happi_duck = stbi_load("../assets/happidesktopduckie.png", &duck_width, &duck_height, &nrChannels, STBI_rgb_alpha);
 
-    if(data) {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, duck_width, duck_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    if(base_duck) {
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, duck_width, duck_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, base_duck);
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else {
         std::cout << "Failed to load texture" << std::endl;
         std::cerr << stbi_failure_reason() << std::endl;
     }
-    stbi_image_free(data);
 
     // shaders
     const char *vertexShaderSource = R"glsl(
@@ -195,10 +195,13 @@ int main() {
     glm::vec3 currentPosition = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::vec3 movingTowards = glm::vec3(0.3f, 0.3f, 0.0f);
     float speed = 0.05f;
+    float angleRadians = 0.0f;
 
     bool stopped = false;
     float stopTime = 0.0f;
     float stopMax = 15.0f;
+    double relativeCursorX = 0.0;
+    double relativeCursorY = 0.0;
 
     glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -214,6 +217,7 @@ int main() {
         if(!stopped && glm::distance(currentPosition, movingTowards) > step) {
             glm::vec3 direction = glm::normalize(movingTowards - currentPosition);
             currentPosition += direction * step;
+            angleRadians = std::atan2(direction.y, direction.x);
         }
         else if (!stopped) {
             currentPosition = movingTowards;
@@ -232,13 +236,25 @@ int main() {
         }
 
         // create textures
-        glm::mat4 trans = glm::mat4(1.0f);
-        trans = glm::translate(trans, currentPosition);
-        //trans = glm::rotate(trans, currentTime, glm::vec3(0.0f, 0.0f, 1.0f));
+        glm::mat4 trans = glm::translate(glm::mat4(1.0f), currentPosition);
+        glm::mat4 trans_full = glm::rotate(trans, angleRadians, glm::vec3(0.0f, 0.0f, 1.0f));
 
         glUseProgram(shaderProgram);
         unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
-        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans_full));
+
+        // "petting" the duck if cursor is moving near it, changes sprites and causes hearts animation
+        glfwGetCursorPos(window, &relativeCursorX, &relativeCursorY);
+        double ndcX = (relativeCursorX / width) * 2.0 - 1.0;
+        double ndcY = 1.0 - (relativeCursorY / height) * 2.0;
+        float dist_to_duck = sqrt(glm::pow(ndcX - currentPosition.x, 2) + glm::pow(ndcY - currentPosition.y, 2));
+        if(dist_to_duck < 0.07) {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, duck_width, duck_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, happi_duck);
+        }
+        else {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, duck_width, duck_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, base_duck);
+        }
+        glGenerateMipmap(GL_TEXTURE_2D);
 
         // render duck quad container
         glBindVertexArray(VAO);
